@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "preflightml"
+version = "0.1.0"
+description = "Run this before you train your classifier: dataset readiness, leakage and train/test split checks with column-level findings."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Avin Ashok" }]
+keywords = [
+    "machine-learning", "data-science", "data-quality", "data-leakage",
+    "classification", "train-test-split", "validation", "pandas",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.23",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/AvinAshok2050/preflightml"
+Repository = "https://github.com/AvinAshok2050/preflightml"
+Issues = "https://github.com/AvinAshok2050/preflightml"
+
+[tool.setuptools.packages.find]
+where = ["src"]
