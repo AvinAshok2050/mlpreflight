@@ -1,4 +1,4 @@
-# Getting Started with the preflightml Codebase
+# Getting Started with the mlpreflight Codebase
 
 This doc is for reading the *code*, not just using the library. Read it in this order.
 
@@ -7,7 +7,7 @@ This doc is for reading the *code*, not just using the library. Read it in this 
 Before reading any code, see it work:
 
 ```bash
-cd preflightml
+cd mlpreflight
 pip install -e .          # "editable install" - lets you edit code and re-test instantly
 python demo.py
 ```
@@ -21,18 +21,18 @@ building toward.
 The codebase is small on purpose. Read these five files, in this order, and you'll
 understand the whole architecture:
 
-### Step 1 - `src/preflightml/core/finding.py`
+### Step 1 - `src/mlpreflight/core/finding.py`
 Defines `Finding` - the shape every single check result takes (title, severity,
 what/why/recommendation, affected columns). Every other file either creates one of
 these or displays one. Nothing else to understand until you've read this.
 
-### Step 2 - `src/preflightml/core/context.py`
+### Step 2 - `src/mlpreflight/core/context.py`
 Defines `InspectionContext` - takes your raw dataframe and figures out, once,
 which columns are numeric vs categorical, which look like IDs, etc. Every check
 receives one of these as input instead of the raw dataframe, so checks don't
 each redo the same detective work.
 
-### Step 3 - `src/preflightml/checks/basic.py`
+### Step 3 - `src/mlpreflight/checks/basic.py`
 Open this and find `check_imbalance` (search for `def check_imbalance`). This is
 the simplest real check in the library - read it top to bottom. It:
 1. Looks at `ctx.y_train` (the target column)
@@ -43,13 +43,13 @@ the simplest real check in the library - read it top to bottom. It:
 Every other check in this file and in `leakage.py` follows this exact same pattern -
 once `check_imbalance` makes sense, the rest is just "same idea, different math".
 
-### Step 4 - `src/preflightml/core/registry.py`
+### Step 4 - `src/mlpreflight/core/registry.py`
 Two jobs:
 - `@register(...)` - the decorator above every check function. It's how a check
   "signs up" to be run automatically - nobody has to maintain a master list by hand.
 - `compute_score(...)` - turns a list of Findings into the 0-100 readiness score.
 
-### Step 5 - `src/preflightml/api.py`
+### Step 5 - `src/mlpreflight/api.py`
 The `inspect()` function you actually call as a user. Look at how short it is -
 it just builds a `InspectionContext`, loops over every registered check, collects
 the Findings, and wraps them in a `Report`. All the real logic lives in the files

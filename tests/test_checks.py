@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from preflightml import inspect, Severity
+from mlpreflight import inspect, Severity
 
 
 def _clean(n=3000, seed=0):
@@ -123,6 +123,6 @@ def test_column_report_inverts_findings():
 
 def test_outputs_render():
     r = inspect(_clean(), target="t")
-    assert "PREFLIGHTML REPORT" in __import__("preflightml").render.console.render_summary(r)
+    assert "MLPREFLIGHT REPORT" in __import__("mlpreflight").render.console.render_summary(r)
     assert r.to_json().startswith("{")
     assert r.to_html().startswith("<!DOCTYPE html>")

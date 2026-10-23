@@ -3,7 +3,7 @@ requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "preflightml"
+name = "mlpreflight"
 version = "0.1.0"
 description = "Run this before you train your classifier: dataset readiness, leakage and train/test split checks with column-level findings."
 readme = "README.md"
@@ -36,9 +36,9 @@ dependencies = [
 dev = ["pytest>=7.0", "build", "twine"]
 
 [project.urls]
-Homepage = "https://github.com/AvinAshok2050/preflightml"
-Repository = "https://github.com/AvinAshok2050/preflightml"
-Issues = "https://github.com/AvinAshok2050/preflightml"
+Homepage = "https://github.com/AvinAshok2050/mlpreflight"
+Repository = "https://github.com/AvinAshok2050/mlpreflight"
+Issues = "https://github.com/AvinAshok2050/mlpreflight"
 
 [tool.setuptools.packages.find]
 where = ["src"]

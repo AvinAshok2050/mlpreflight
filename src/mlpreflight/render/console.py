@@ -23,7 +23,7 @@ def _kv(k: str, v: str) -> str:
 def render_summary(report) -> str:
     m = report.meta
     lines = [_rule("=")]
-    lines.append(_row("PREFLIGHTML REPORT".center(W - 4)))
+    lines.append(_row("MLPREFLIGHT REPORT".center(W - 4)))
     lines.append(_rule("="))
     lines.append(_kv("Dataset", f"{m.get('n_rows', 0):,} x {m.get('n_cols', 0)}"))
     lines.append(_kv("MODEL READINESS", f"{report.score} / 100"))

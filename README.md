@@ -1,8 +1,8 @@
-# preflightml
+# mlpreflight
 
 **Run this before you train your classifier.**
 
-`preflightml` answers one question: *is my classification dataset ready to model, and if not, exactly what should I fix?*
+`mlpreflight` answers one question: *is my classification dataset ready to model, and if not, exactly what should I fix?*
 
 It inspects your data before any model is trained and reports, column by column, what is risky, why it matters and what to do about it. It is not an AutoML tool, a modelling framework or a model trainer. It runs *before* those, and tells you whether the numbers they produce can be trusted.
 
@@ -15,7 +15,7 @@ It inspects your data before any model is trained and reports, column by column,
 ## Installation
 
 ```bash
-pip install preflightml
+pip install mlpreflight
 ```
 
 Requires Python 3.10 or newer and pandas 2.0 or newer. Tested on Python 3.12 and 3.13 with pandas 2.3 and 3.0.
@@ -26,7 +26,7 @@ Requires Python 3.10 or newer and pandas 2.0 or newer. Tested on Python 3.12 and
 
 ```python
 import pandas as pd
-import preflightml as pf
+import mlpreflight as pf
 
 df = pd.read_csv("churn.csv")
 
@@ -34,13 +34,13 @@ report = pf.inspect(df, target="Churn")
 report.summary()
 ```
 
-> Tip: `import preflightml as pf` avoids shadowing Python's built-in `inspect` module. `from preflightml import inspect` also works.
+> Tip: `import mlpreflight as pf` avoids shadowing Python's built-in `inspect` module. `from mlpreflight import inspect` also works.
 
 Real output on a synthetic telecom churn dataset (8,000 rows, with one planted leaky column):
 
 ```
 +============================================================+
-|                     PREFLIGHTML REPORT                     |
+|                     MLPREFLIGHT REPORT                     |
 +============================================================+
 | Dataset             8,000 x 16                             |
 | MODEL READINESS     55 / 100                               |
@@ -137,7 +137,7 @@ if report.has_blocking_issues:      # True if any Critical finding exists
 ## API
 
 ```python
-preflightml.inspect(
+mlpreflight.inspect(
     train,               # DataFrame, including the target column
     target,              # name of the target column
     test=None,           # optional held-out DataFrame (enables split checks)
@@ -216,11 +216,11 @@ This is an early release. Please read these before relying on it:
 
 ## Contributing
 
-Issues and pull requests are welcome at https://github.com/AvinAshok2050/preflightml.git.
+Issues and pull requests are welcome at https://github.com/AvinAshok2050/mlpreflight.git.
 
 ```bash
-git clone https://github.com/AvinAshok2050/preflightml.git
-cd preflightml
+git clone https://github.com/AvinAshok2050/mlpreflight.git
+cd mlpreflight
 pip install -e ".[dev]"
 python -m pytest tests/ -q
 ```

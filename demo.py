@@ -1,6 +1,6 @@
 """Demo: build a deliberately broken dataset and inspect it."""
 import numpy as np, pandas as pd
-from preflightml import inspect
+from mlpreflight import inspect
 
 rng = np.random.default_rng(7)
 N = 6000

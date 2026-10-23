@@ -78,8 +78,8 @@ def render_html(report) -> str:
             )
 
     return f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<title>preflightml Report</title><style>{_CSS}</style></head><body><div class="wrap">
-<h1>preflightml Report</h1>
+<title>mlpreflight Report</title><style>{_CSS}</style></head><body><div class="wrap">
+<h1>mlpreflight Report</h1>
 <div class="sub">{m.get('n_rows', 0):,} rows &times; {m.get('n_cols', 0)} columns
 &middot; target <code>{_html.escape(str(m.get('target', '')))}</code>
 &middot; {m.get('n_classes', '?')} classes</div>

@@ -1,4 +1,4 @@
-"""preflightml - run this before you train your classifier."""
+"""mlpreflight - run this before you train your classifier."""
 from .api import inspect
 from .report import Report
 from .core.finding import Finding, Severity
